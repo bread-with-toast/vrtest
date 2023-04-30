@@ -3,15 +3,36 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" animation="property: position; to: 0 0 2; dur: 2000; direction: alternate; loop:true"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+   <a-scene>
+  <a-entity camera look-controls position="0 1.6 0">
+    <a-cursor color="black"></a-cursor>
+  </a-entity>
 
-      
-    </a-scene>
+  <a-cylinder color="blue" position="0 1 -3" radius="1" height="2"
+            onmouseenter="var cylinder = this;
+            var cursor = document.querySelector('a-cursor');
+            var timer = setTimeout(function() { 
+                cylinder.setAttribute('color', 'green'); 
+                cursor.setAttribute('color', 'green'); }, 2000); 
+ 
+            var timer2 = setTimeout(function() { 
+                cylinder.setAttribute('color', 'orange'); 
+                cursor.setAttribute('color', 'black'); }, 5000); 
+
+            this.timer = timer;
+            this.timer2 = timer2;"
+
+
+            onmouseleave="this.setAttribute('color', 'blue'); 
+            document.querySelector('a-cursor').setAttribute('color', 'black'); 
+            clearTimeout(this.timer);">
+</a-cylinder>
+
+</a-scene>
+
+
+
+
 
 
   </body>
